@@ -3,46 +3,58 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, ShieldCheck, Cloud, Laptop, Network } from "lucide-react";
+import { Mail, ShieldCheck, Cloud, Laptop, Network } from "lucide-react";
 
 export default function Page() {
   return (
     <div className="min-h-screen bg-slate-950 text-white">
 
       {/* HEADER */}
-      <header className="flex items-center justify-between px-6 py-4 bg-black/60 backdrop-blur sticky top-0 z-50">
-        <div className="flex items-center gap-3">
-          <img
-            src="/calypso-one-it-logo.png"
-            alt="Calypso One IT LLC Logo"
-            className="h-10 w-auto"
-          />
-          <span className="font-semibold tracking-wide">
-            Calypso One IT LLC
-          </span>
-        </div>
-        <nav className="hidden md:flex gap-6 text-slate-300">
-          <a href="#services" className="hover:text-white">Services</a>
-          <a href="#why" className="hover:text-white">Why Us</a>
-          <a href="#contact" className="hover:text-white">Contact</a>
-        </nav>
+      <header className="flex items-center justify-center px-6 py-4 bg-black/60 backdrop-blur sticky top-0 z-50">
+        <span className="font-semibold tracking-wide">
+          Calypso One IT LLC
+        </span>
       </header>
 
       {/* HERO */}
-      <section className="relative flex flex-col items-center justify-center text-center px-6 py-32 bg-gradient-to-br from-slate-900 to-black">
+      <section className="relative flex flex-col items-center justify-center text-center px-6 py-32 bg-gradient-to-br from-slate-900 to-black overflow-hidden">
+
+        {/* Logo glow */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-96 h-96 rounded-full bg-blue-500/10 blur-3xl" />
+        </div>
+
+        {/* Logo */}
+        <motion.img
+          src="/calypso-one-it-logo.png"
+          alt="Calypso One IT LLC Logo"
+          className="h-28 w-auto mb-8 relative z-10"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-bold mb-6"
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-5xl md:text-6xl font-bold mb-6 relative z-10"
         >
           Calypso One IT LLC
         </motion.h1>
-        <p className="text-xl md:text-2xl max-w-2xl text-slate-300 mb-8">
-          Reliable IT Solutions. Security-Focused. Business Ready.
+
+        <p className="text-xl md:text-2xl max-w-2xl text-slate-300 mb-8 relative z-10">
+          Reliable IT Solutions with <strong>20+ Years of IT Experience</strong>.
+          Security-Focused. Business Ready.
         </p>
-        <div className="flex gap-4">
-          <Button size="lg">Request Consultation</Button>
+
+        <div className="flex gap-4 relative z-10">
+          <a href="mailto:calypsooneit@gmail.com?subject=Request%20Consultation">
+  <Button size="lg">
+    Request Consultation
+  </Button>
+</a>
+
           <Button size="lg" variant="outline">View Services</Button>
         </div>
       </section>
@@ -66,15 +78,17 @@ export default function Page() {
           <div>
             <h2 className="text-3xl font-bold mb-4">Why Calypso One IT?</h2>
             <p className="text-slate-300 mb-4">
-              We specialize in small businesses and nonprofits that need enterprise-level security without enterprise pricing.
+              With over <strong>20 years of hands-on IT experience</strong>, we help
+              small businesses and nonprofits operate securely, efficiently, and confidently.
             </p>
             <ul className="space-y-2 text-slate-300">
-              <li>✔ Fast response times</li>
               <li>✔ Security-first mindset</li>
               <li>✔ Clear documentation</li>
-              <li>✔ Scalable solutions</li>
+              <li>✔ Scalable, practical solutions</li>
+              <li>✔ Real-world experience</li>
             </ul>
           </div>
+
           <Card className="bg-slate-950">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold mb-4">Industries Served</h3>
@@ -83,7 +97,7 @@ export default function Page() {
                 <li>• Nonprofits</li>
                 <li>• Retail</li>
                 <li>• Healthcare Offices</li>
-                <li>• Cannabis Operations</li>
+                <li>• Dispensary Operations</li>
               </ul>
             </CardContent>
           </Card>
@@ -94,15 +108,20 @@ export default function Page() {
       <section id="contact" className="px-6 py-24 max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
         <p className="text-slate-300 mb-8">Let’s talk about your IT needs.</p>
-        <div className="flex flex-col md:flex-row justify-center gap-6">
-          <div className="flex items-center gap-3">
-            <Mail /> info@calypsooneitllc.com
-          </div>
-          <div className="flex items-center gap-3">
-            <Phone /> (555) 123-4567
-          </div>
+
+        <div className="flex items-center justify-center gap-3 text-lg">
+          <Mail />
+          <a
+            href="mailto:calypsooneit@gmail.com"
+            className="hover:text-blue-400"
+          >
+            calypsooneit@gmail.com
+          </a>
         </div>
-        <Button className="mt-10" size="lg">Email Us</Button>
+
+        <Button className="mt-10" size="lg">
+          Email Us
+        </Button>
       </section>
 
       <footer className="bg-black text-center py-6 text-slate-500">
