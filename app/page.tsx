@@ -34,7 +34,6 @@ export default function Page() {
               opacity-75
             "
           />
-
           {/* Blend + readability overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/85" />
         </div>
@@ -149,7 +148,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* CONTACT */}
+      {/* CONTACT (Mac + Windows friendly) */}
       <section
         id="contact"
         className="px-6 py-20 md:py-24 max-w-4xl mx-auto text-center"
@@ -159,14 +158,35 @@ export default function Page() {
           Reach out and we’ll respond as soon as possible.
         </p>
 
-        <div className="flex items-center justify-center gap-3 text-lg text-slate-200">
-          <Mail />
+        <div className="flex flex-col items-center gap-4 text-lg text-slate-200">
+          {/* Primary mailto */}
           <a
-            href="mailto:calypsooneit@gmail.com"
+            href="mailto:calypsooneit@gmail.com?subject=Request%20Consultation"
             className="hover:text-blue-400 underline underline-offset-4"
           >
             calypsooneit@gmail.com
           </a>
+
+          {/* Gmail fallback */}
+          <a
+            href="https://mail.google.com/mail/?view=cm&to=calypsooneit@gmail.com&su=Request%20Consultation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-slate-400 hover:text-blue-400"
+          >
+            Open in Gmail instead
+          </a>
+
+          {/* Copy fallback */}
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText("calypsooneit@gmail.com");
+              alert("Email address copied to clipboard");
+            }}
+            className="text-sm text-slate-400 hover:text-blue-400"
+          >
+            Copy email address
+          </button>
         </div>
       </section>
 
